@@ -50,6 +50,9 @@
             // 
             this.devicesGridView.AllowUserToAddRows = false;
             this.devicesGridView.AllowUserToDeleteRows = false;
+            this.devicesGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.devicesGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.devicesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.devicesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -60,12 +63,12 @@
             this.DriverDescriptionColumn,
             this.SysFileColumn,
             this.DevicePathColumn});
-            this.devicesGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.devicesGridView.Location = new System.Drawing.Point(3, 3);
             this.devicesGridView.Name = "devicesGridView";
             this.devicesGridView.ReadOnly = true;
             this.devicesGridView.Size = new System.Drawing.Size(735, 205);
             this.devicesGridView.TabIndex = 0;
+            this.devicesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.devicesGridView_CellContentClick);
             // 
             // GUIDColumn
             // 
@@ -111,30 +114,32 @@
             // 
             // enableButton
             // 
-            this.enableButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.enableButton.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.enableButton.Location = new System.Drawing.Point(3, 3);
             this.enableButton.Name = "enableButton";
-            this.enableButton.Size = new System.Drawing.Size(75, 28);
+            this.enableButton.Size = new System.Drawing.Size(271, 28);
             this.enableButton.TabIndex = 1;
             this.enableButton.Text = "Enable";
             this.enableButton.UseVisualStyleBackColor = true;
+            this.enableButton.Click += new System.EventHandler(this.enableButton_Click);
             // 
             // disableButton
             // 
-            this.disableButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.disableButton.Location = new System.Drawing.Point(104, 3);
+            this.disableButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.disableButton.Location = new System.Drawing.Point(280, 3);
             this.disableButton.Name = "disableButton";
-            this.disableButton.Size = new System.Drawing.Size(75, 28);
+            this.disableButton.Size = new System.Drawing.Size(271, 28);
             this.disableButton.TabIndex = 2;
             this.disableButton.Text = "Disable";
             this.disableButton.UseVisualStyleBackColor = true;
+            this.disableButton.Click += new System.EventHandler(this.disableButton_Click);
             // 
             // exitButton
             // 
-            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.exitButton.Location = new System.Drawing.Point(657, 3);
+            this.exitButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.exitButton.Location = new System.Drawing.Point(557, 3);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(75, 28);
+            this.exitButton.Size = new System.Drawing.Size(175, 28);
             this.exitButton.TabIndex = 3;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
@@ -143,9 +148,9 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.11723F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.88277F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 173F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 181F));
             this.tableLayoutPanel1.Controls.Add(this.enableButton, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.disableButton, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.exitButton, 2, 0);

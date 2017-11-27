@@ -7,6 +7,9 @@ using DeviceManager.Device;
 
 namespace DeviceManager.Scanner
 {
+    /// <summary>
+    /// This class detects devices
+    /// </summary>
     sealed class DeviceScanner
     {
         private static DeviceScanner _instance;
@@ -30,6 +33,7 @@ namespace DeviceManager.Scanner
         private const string DRIVER_DESCRIPTION_PROPERTY = "Description";
         private const string SYS_FILE_PROPERTY = "PathName";
         private const string DEVICE_PATH_PROPERTY = "DeviceID";
+        private const string DEVICE_STATUS_PROPERTY = "Status";
         
 
         public List<PCDevice> Devices { get; set; }
@@ -42,13 +46,12 @@ namespace DeviceManager.Scanner
             {
                 var currentDevice = new PCDevice();
 
-                currentDevice.GUID = device[GUID_PROPERTY].ToString();
-                object hardwareIDProp = device[HARDWARE_ID_PROPERTY];
-                currentDevice.HardwareID = (hardwareIDProp != null) ? string.Join("", (string[])hardwareIDProp) : "";
-                object manufacturerProp = device[MANUFACTURER_PROPERTY];
-                currentDevice.Manufacturer = (manufacturerProp != null) ? manufacturerProp.ToString() : "";
-                currentDevice.Name = device[NAME_PROPERTY].ToString();
+                currentDevice.GUID = device[GUID_PROPERTY]?.ToString();
+                currentDevice.HardwareID = ((string[])device[HARDWARE_ID_PROPERTY])?.Aggregate((current, next) => current + next);
+                currentDevice.Manufacturer = device[MANUFACTURER_PROPERTY]?.ToString();
+                currentDevice.Name = device[NAME_PROPERTY]?.ToString();
                 currentDevice.DevicePath = device[DEVICE_PATH_PROPERTY].ToString();
+                currentDevice.Enabled = (device[DEVICE_STATUS_PROPERTY].ToString() == "OK") ? true : false;
 
                 var driverInfo = ((ManagementObject)device).GetRelated("Win32_SystemDriver");
                 foreach (var driver in driverInfo)
