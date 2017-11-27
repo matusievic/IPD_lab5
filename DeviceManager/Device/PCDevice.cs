@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DeviceManager.Device
 {
-    class Device
+    class PCDevice
     {
         public string GUID { get; set; }
         public string HardwareID { get; set; }
