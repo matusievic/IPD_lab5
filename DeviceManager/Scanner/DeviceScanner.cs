@@ -23,13 +23,13 @@ namespace DeviceManager.Scanner
             UpdateDevices();
         }
 
-        private static const string GUID_PROPERTY = "ClassGUID";
-        private static const string HARDWARE_ID_PROPERTY = "HardwareID";
-        private static const string Manufacturer_PROPERTY = "Manufacturer";
-        private static const string PROVIDER_PROPERTY = "Caption";
-        private static const string DRIVER_DESCRIPTION_PROPERTY = "Description";
-        private static const string SYS_FILE_PROPERTY = "PathName";
-        private static const string DEVICE_PATH_PROPERTY = "DeviceID";
+        private const string GUID_PROPERTY = "ClassGUID";
+        private const string HARDWARE_ID_PROPERTY = "HardwareID";
+        private const string Manufacturer_PROPERTY = "Manufacturer";
+        private const string PROVIDER_PROPERTY = "Caption";
+        private const string DRIVER_DESCRIPTION_PROPERTY = "Description";
+        private const string SYS_FILE_PROPERTY = "PathName";
+        private const string DEVICE_PATH_PROPERTY = "DeviceID";
         
 
         public List<PCDevice> Devices { get; set; }
@@ -43,8 +43,10 @@ namespace DeviceManager.Scanner
                 var currentDevice = new PCDevice();
 
                 currentDevice.GUID = device[GUID_PROPERTY].ToString();
-                currentDevice.HardwareID = device[HARDWARE_ID_PROPERTY].ToString();
-                currentDevice.Manufacturer = device[Manufacturer_PROPERTY].ToString();
+                object hardwareIDProp = device[HARDWARE_ID_PROPERTY];
+                currentDevice.HardwareID = (hardwareIDProp != null) ? string.Join("", (string[]) hardwareIDProp) : "";
+                object manufacturerProp = device[Manufacturer_PROPERTY];
+                currentDevice.Manufacturer = (manufacturerProp != null) ? manufacturerProp.ToString() : "";
                 currentDevice.Provider = device[PROVIDER_PROPERTY].ToString();
                 currentDevice.DevicePath = device[DEVICE_PATH_PROPERTY].ToString();
 
