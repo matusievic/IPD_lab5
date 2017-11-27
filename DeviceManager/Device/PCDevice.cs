@@ -10,7 +10,7 @@ namespace DeviceManager.Device
         public string GUID { get; set; }
         public string HardwareID { get; set; }
         public string Manufacturer { get; set; }
-        public string Provider { get; set; }
+        public string Name { get; set; }
         public string DriverDescription { get; set; }
         public string SysFile { get; set; }
         public string DevicePath { get; set; }
