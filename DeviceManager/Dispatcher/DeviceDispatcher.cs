@@ -10,18 +10,8 @@ namespace DeviceManager.Dispatcher
     sealed class DeviceDispatcher
     {
         private static DeviceDispatcher _instance;
-        public static DeviceDispatcher GetInstance()
-        {
-            if (_instance == null)
-            {
-                _instance = new DeviceDispatcher();
-            }
-            return _instance;
-        }
-        private DeviceDispatcher()
-        {
-            UpdateDevices();
-        }
+        public static DeviceDispatcher GetInstance() { return _instance ?? (_instance = new DeviceDispatcher()); }
+        private DeviceDispatcher() { UpdateDevices(); }
 
         public List<PCDevice> Devices { get; private set; }
         public List<PCDevice> UpdateDevices()

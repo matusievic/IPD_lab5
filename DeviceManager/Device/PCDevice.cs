@@ -17,7 +17,7 @@ namespace DeviceManager.Device
         public string DevicePath { get; set; }
         public bool Enabled { get; set; }
 
-        public void enable()
+        public void Enable()
         {
             var devices = new ManagementObjectSearcher("SELECT * FROM Win32_PNPEntity").Get();
             foreach (var dev in devices)
@@ -34,7 +34,7 @@ namespace DeviceManager.Device
             throw new PCDeviceException("Cannot find this device");
         }
 
-        public void disable()
+        public void Disable()
         {
             var devices = new ManagementObjectSearcher("SELECT * FROM Win32_PNPEntity").Get();
             foreach (var dev in devices)

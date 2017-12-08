@@ -13,18 +13,8 @@ namespace DeviceManager.Scanner
     sealed class DeviceScanner
     {
         private static DeviceScanner _instance;
-        public static DeviceScanner GetInstance()
-        {
-            if (_instance == null)
-            {
-                _instance = new DeviceScanner();
-            }
-            return _instance;
-        }
-        private DeviceScanner()
-        {
-            UpdateDevices();
-        }
+        public static DeviceScanner GetInstance() { return _instance ?? (_instance = new DeviceScanner()); }
+        private DeviceScanner() { UpdateDevices(); }
 
         private const string GUID_PROPERTY = "ClassGUID";
         private const string HARDWARE_ID_PROPERTY = "HardwareID";
